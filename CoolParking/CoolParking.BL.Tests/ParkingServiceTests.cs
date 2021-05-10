@@ -33,7 +33,7 @@ namespace CoolParking.BL.Tests
         {
             var newParkingService = new ParkingService(_withdrawTimer, _logTimer, _logService);
             var vehicle = new Vehicle("AA-0001-AA", VehicleType.Truck, 100);
-            _parkingService.AddVehicle(vehicle);  
+            _parkingService.AddVehicle(vehicle);
 
             Assert.Single(newParkingService.GetVehicles());
             Assert.Single(_parkingService.GetVehicles());
