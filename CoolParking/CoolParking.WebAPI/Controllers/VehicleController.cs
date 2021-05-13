@@ -76,7 +76,7 @@ namespace CoolParking.WebAPI.Controllers
 
         // DELETE api/vehicles/id
         [HttpDelete("{id}")]
-        public ActionResult Dell([FromRoute] string id)
+        public ActionResult Delete([FromRoute] string id)
         {
 
             try
