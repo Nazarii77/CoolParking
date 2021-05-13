@@ -9,6 +9,8 @@ using CoolParking.BL.Models;
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
+using System;
 
 namespace CoolParking.BL.Services
 {
@@ -47,6 +49,25 @@ namespace CoolParking.BL.Services
 
         }
         private bool IsNotEqualId(string vehicleId) => !Park.Vehicles.Any(Vehicle => Vehicle.Id == vehicleId);
+
+
+        public Vehicle GetVehicle(string vehicleId)
+        {
+            try
+            {
+                if (!IsNotEqualId(vehicleId))
+                {
+                    throw new InvalidDataException();
+                }
+                Vehicle vehicle = Park.Vehicles.Single(r => r.Id == vehicleId);
+
+                return vehicle;
+            }
+            catch (InvalidOperationException)
+            {
+                throw new ArgumentException();
+            }
+        }
         public void Dispose()
         {
             Park.Balance = Settings.initialParkingBalance;
